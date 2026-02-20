@@ -128,9 +128,9 @@ export default function Upload() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-20 px-4">
+    <div className="min-h-screen bg-white py-20 px-4">
       <div className="max-w-xl mx-auto">
-        <div className="bg-white border-4 border-kyokushin-black p-8 md:p-12 shadow-2xl">
+        <div className="bg-white border-8 border-kyokushin-black p-8 md:p-12 shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center justify-between mb-12">
             <h1 className="text-3xl font-black italic uppercase tracking-tighter">FOTO <span className="text-kyokushin-red">UPLOAD</span></h1>
             <button 

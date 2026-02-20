@@ -58,18 +58,18 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-32 bg-white">
+      <section className="py-32 bg-white border-y-8 border-kyokushin-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-16">
+          <div className="grid md:grid-cols-3 gap-0 border-4 border-kyokushin-black">
             {[
               { id: '01', title: 'Traditie', text: 'Wij onderwijzen het authentieke Kyokushin karate zoals Mas Oyama het bedoeld heeft. Geen shortcuts, alleen hard werken.' },
               { id: '02', title: 'Discipline', text: 'Karate is meer dan vechten. Het is de weg naar zelfbeheersing, focus en een onverwoestbare mentaliteit.' },
               { id: '03', title: 'Gemeenschap', text: 'Bij Kyokushin Leiden trainen we samen. We helpen elkaar groeien, ongeacht je niveau of achtergrond.' }
-            ].map((feature) => (
-              <div key={feature.id} className="group">
-                <div className="text-7xl font-black text-slate-100 group-hover:text-kyokushin-red/10 transition-colors mb-4">{feature.id}</div>
-                <h3 className="text-3xl font-black mb-6 italic uppercase tracking-tighter">{feature.title}</h3>
-                <p className="text-slate-600 leading-relaxed font-medium">{feature.text}</p>
+            ].map((feature, index) => (
+              <div key={feature.id} className={`p-12 group hover:bg-kyokushin-black hover:text-white transition-all duration-500 ${index !== 2 ? 'md:border-r-4 border-kyokushin-black' : ''}`}>
+                <div className="text-8xl font-black text-slate-100 group-hover:text-kyokushin-red transition-colors mb-4">{feature.id}</div>
+                <h3 className="text-4xl font-black mb-6 italic uppercase tracking-tighter">{feature.title}</h3>
+                <p className="text-slate-600 group-hover:text-slate-300 leading-relaxed font-bold uppercase tracking-tight text-sm">{feature.text}</p>
               </div>
             ))}
           </div>

@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-16 mb-16">
           <div className="col-span-2">
             <div className="flex items-center gap-4 mb-8">
-              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" className="h-24 w-auto" />
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" className="h-24 w-auto brightness-0 invert" />
               <span className="text-4xl font-black tracking-tighter">KYOKUSHIN <span className="text-kyokushin-red">LEIDEN</span></span>
             </div>
             <p className="text-slate-400 text-lg max-w-md">De officiële dojo voor Kyokushinkai Karate in Leiden. Sluit je aan bij de sterkste karate familie.</p>
