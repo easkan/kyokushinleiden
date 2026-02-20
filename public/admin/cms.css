@@ -2,7 +2,7 @@
 
 /* 
   Redesign for Decap CMS Admin Panel 
-  Focus: Mobile Reachability and Usability
+  Focus: STRICT Mobile-Only Usability
 */
 
 :root {
@@ -10,123 +10,126 @@
   --dark-bg: #121212;
 }
 
-/* Global resets for the CMS app */
-.nc-app-container {
-  font-family: 'Inter', sans-serif !important;
-}
-
-/* --- MOBILE OPTIMIZATIONS (Max-width: 800px) --- */
+/* --- MOBILE-ONLY OVERRIDES (Max-width: 800px) --- */
 @media (max-width: 800px) {
-  /* 1. Header Redesign */
+  /* Global resets for mobile */
+  .nc-app-container {
+    font-family: 'Inter', sans-serif !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 1. Header Redesign - Compact and Sticky */
   .nc-app-header {
-    height: 56px !important;
-    padding: 0 8px !important;
+    height: 50px !important;
+    padding: 0 10px !important;
     background-color: var(--dark-bg) !important;
+    border-bottom: 3px solid var(--primary-red) !important;
     position: sticky !important;
     top: 0;
     z-index: 1000;
   }
 
   .nc-app-header-logo {
-    height: 32px !important;
-    margin-right: 8px !important;
+    height: 24px !important;
+    filter: brightness(0) invert(1) !important; /* White logo on dark bg */
   }
 
-  /* 2. Sidebar / Collection List */
+  /* 2. Sidebar / Navigation - Stacked */
   .nc-app-sidebar {
     width: 100% !important;
     position: relative !important;
     height: auto !important;
     border-right: none !important;
-    border-bottom: 1px solid #eee;
+    background: #f8f8f8 !important;
   }
 
-  /* 3. Main View Area */
-  .nc-app-main-view {
-    padding: 0 !important;
-  }
-
-  /* 4. Collection Page (List of entries) */
+  /* 3. Collection List - Full Width Cards */
   .nc-collectionPage-sidebar {
-    display: none !important; /* Hide secondary sidebar on mobile */
+    display: none !important;
   }
 
   .nc-collectionPage-content {
-    padding: 12px !important;
+    padding: 10px !important;
   }
 
-  /* Make cards larger and easier to tap */
   .nc-collectionPage-listCard {
-    margin-bottom: 16px !important;
-    border-radius: 8px !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-    padding: 16px !important;
+    margin: 0 0 12px 0 !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+    border: 1px solid #eee !important;
+    padding: 20px !important;
   }
 
-  /* 5. Editor Redesign (Crucial) */
+  /* 4. Editor - Mobile Optimized */
   .nc-entryEditor-controlPane.nc-entryEditor-previewPane {
-    display: none !important; /* Force hide preview */
+    display: none !important; /* Hide preview on phone */
   }
 
   .nc-entryEditor-controlPane {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 16px !important;
-    margin-bottom: 80px !important; /* Space for fixed footer */
+    padding: 15px !important;
+    margin-bottom: 100px !important; /* Extra space for bottom bar */
   }
 
-  /* Fix the "Save" and "Publish" buttons - Make them a fixed footer bar */
-  .nc-app-header-button {
-    background-color: var(--primary-red) !important;
-    color: white !important;
-    border-radius: 4px !important;
-    font-weight: bold !important;
-    text-transform: uppercase !important;
-    font-size: 12px !important;
-  }
-
-  /* Attempt to target the editor footer/toolbar if it exists */
+  /* 5. Fixed Bottom Toolbar for Action Buttons */
+  /* This targets the container of Save/Publish buttons */
   .nc-entryEditor-toolbar {
     position: fixed !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
+    height: 70px !important;
     background: white !important;
-    border-top: 2px solid var(--primary-red) !important;
-    padding: 12px !important;
+    border-top: 1px solid #ddd !important;
+    padding: 10px 20px !important;
     display: flex !important;
-    justify-content: space-around !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     z-index: 9999 !important;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.08) !important;
   }
 
-  /* Make inputs full width and large */
-  input, textarea, select {
-    font-size: 16px !important; /* Prevents iOS zoom on focus */
-    padding: 12px !important;
+  /* Make buttons large and reachable */
+  .nc-app-header-button, 
+  .nc-entryEditor-toolbar button {
+    height: 44px !important;
+    padding: 0 20px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
-  /* Adjust the "Add New" button */
-  .nc-collectionPage-topBar-button {
-    width: 100% !important;
-    margin-top: 10px !important;
-    padding: 12px !important;
-    text-align: center !important;
+  /* Primary action button (Save/Publish) */
+  button[class*="PublishButton"],
+  button[class*="SaveButton"] {
+    background-color: var(--primary-red) !important;
+    color: white !important;
+    flex-grow: 1 !important;
+    margin-left: 10px !important;
+  }
+
+  /* 6. Form Inputs - Prevent iOS Zoom */
+  input, textarea, select, [class*="ControlContainer"] {
+    font-size: 16px !important; 
+    line-height: 1.5 !important;
+  }
+
+  /* 7. Hide unnecessary elements on phone */
+  .nc-app-header-quick-add {
+    display: none !important;
   }
 }
 
-/* --- BRANDING & POLISH --- */
-.nc-app-header {
-  border-bottom: 4px solid var(--primary-red) !important;
+/* --- DESKTOP POLISH (Min-width: 801px) --- */
+@media (min-width: 801px) {
+  .nc-app-header {
+    border-bottom: 4px solid var(--primary-red) !important;
+  }
 }
 
-/* Custom scrollbar for the CMS */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
 

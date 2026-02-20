@@ -8,20 +8,14 @@ async function loadGallery() {
   const loadingState = document.getElementById('loading-state');
 
   try {
-    const fetchPath = window.location.pathname.includes('admin') ? '../data/photos.json' : 'data/photos.json';
-    console.log('Fetching photos from:', fetchPath);
-    const response = await fetch(fetchPath);
+    const response = await fetch('/data/photos.json', { cache: 'no-store' });
     
     if (!response.ok) {
-      console.error('Fetch failed:', response.status, response.statusText);
       throw new Error('Kon foto\'s niet laden');
     }
 
     const data = await response.json();
-    console.log('Photos data received:', data);
-    
-    // Handle both { items: [] } and []
-    const photos = Array.isArray(data) ? data : (data.items || []);
+    const photos = data.items || [];
 
     if (photos.length === 0) {
       container.innerHTML = `
