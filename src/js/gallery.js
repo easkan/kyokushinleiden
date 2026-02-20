@@ -38,15 +38,15 @@ async function loadGallery() {
     // Render photos
     photos.forEach(photo => {
       const photoCard = document.createElement('div');
-      photoCard.className = 'group relative overflow-hidden rounded-xl bg-slate-200 aspect-square shadow-md hover:shadow-xl transition-all duration-300';
+      photoCard.className = 'group relative overflow-hidden border-4 border-kyokushin-black aspect-square shadow-xl hover:border-kyokushin-red transition-all duration-300';
       
       photoCard.innerHTML = `
         <img src="${photo.image}" alt="${photo.caption || 'Karate foto'}" 
-             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" 
              loading="lazy"
              referrerPolicy="no-referrer">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-          <p class="text-white font-medium text-sm">${photo.caption || ''}</p>
+        <div class="absolute inset-0 bg-gradient-to-t from-kyokushin-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+          <p class="text-white font-black uppercase italic tracking-widest text-lg">${photo.caption || ''}</p>
         </div>
       `;
       

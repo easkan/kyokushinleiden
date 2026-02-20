@@ -3,37 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Karateschool Zen | Home</title>
+    <title>Kyokushin Karate Leiden | Osu!</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body class="flex flex-col min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="bg-white border-b-4 border-kyokushin-red sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20 items-center">
-          <div class="flex-shrink-0 flex items-center">
-            <span class="text-2xl font-black text-red-700 tracking-tighter">ZEN KARATE</span>
+        <div class="flex justify-between h-24 items-center">
+          <div class="flex-shrink-0 flex items-center gap-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Kyokushin_Kanku.svg/1200px-Kyokushin_Kanku.svg.png" alt="Kanku" class="h-12 w-12">
+            <div class="flex flex-col">
+              <span class="text-2xl font-black text-kyokushin-black leading-none">KYOKUSHIN</span>
+              <span class="text-lg font-bold text-kyokushin-red leading-none">LEIDEN</span>
+            </div>
           </div>
           <div class="hidden md:flex space-x-8">
-            <a href="/" class="nav-link text-red-700">Home</a>
+            <a href="/" class="nav-link text-kyokushin-red">Home</a>
             <a href="/lessen.html" class="nav-link">Lessen</a>
             <a href="/tarieven.html" class="nav-link">Tarieven</a>
             <a href="/gallery.html" class="nav-link">Galerij</a>
             <a href="/contact.html" class="nav-link">Contact</a>
           </div>
           <div class="md:hidden">
-            <!-- Mobile menu button (simplified) -->
-            <button type="button" class="text-slate-600 p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <button type="button" class="text-kyokushin-black p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
         </div>
       </div>
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-2">
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-6 space-y-4">
         <a href="/" class="block nav-link">Home</a>
         <a href="/lessen.html" class="block nav-link">Lessen</a>
         <a href="/tarieven.html" class="block nav-link">Tarieven</a>
@@ -43,109 +45,108 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative h-[80vh] flex items-center overflow-hidden bg-slate-900">
-      <img src="https://picsum.photos/seed/karate1/1920/1080" alt="Karate training" class="absolute inset-0 w-full h-full object-cover opacity-40" referrerPolicy="no-referrer">
+    <header class="relative h-[90vh] flex items-center overflow-hidden bg-black">
+      <img src="https://picsum.photos/seed/kyokushin_hero/1920/1080" alt="Kyokushin training" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000" referrerPolicy="no-referrer">
+      <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">ONTDEK DE KRACHT<br><span class="text-red-500">BINNENIN JEZELF</span></h1>
-        <p class="text-xl md:text-2xl mb-10 max-w-2xl text-slate-200">Karateschool Zen biedt trainingen voor alle leeftijden. Focus op discipline, zelfverdediging en fysieke fitheid.</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/contact.html" class="btn-primary text-center">Gratis Proefles</a>
-          <a href="/lessen.html" class="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-slate-900 transition-all text-center">Bekijk Lessen</a>
+        <div class="inline-block bg-kyokushin-red px-4 py-1 mb-6 font-display font-bold uppercase tracking-widest">The Strongest Karate</div>
+        <h1 class="text-6xl md:text-9xl font-black mb-8 leading-none uppercase italic">KYOKUSHIN<br><span class="text-kyokushin-red">LEIDEN</span></h1>
+        <p class="text-xl md:text-2xl mb-12 max-w-2xl text-slate-300 font-medium">Betreed de weg van de uiterste waarheid. Harde training, discipline en onverzettelijkheid in het hart van Leiden.</p>
+        <div class="flex flex-col sm:flex-row gap-6">
+          <a href="/contact.html" class="btn-kyokushin">Start je proefles</a>
+          <a href="/lessen.html" class="px-8 py-4 border-4 border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all text-center">Onze Dojo</a>
         </div>
       </div>
     </header>
 
     <!-- Info Sections -->
-    <main class="flex-grow">
-      <section class="py-20 bg-white">
+    <main class="flex-grow relative">
+      <div class="absolute inset-0 kanku-bg pointer-events-none"></div>
+      
+      <section class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid md:grid-cols-3 gap-12">
-            <div class="text-center">
-              <div class="w-16 h-16 bg-red-100 text-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          <div class="grid md:grid-cols-2 gap-24 items-center">
+            <div>
+              <h2 class="section-title">KYOKUSHINKAI<br>KARATE</h2>
+              <p class="text-xl text-slate-700 mb-8 leading-relaxed">Kyokushin staat bekend als de hardste vorm van karate. Het is een full-contact stijl waarbij de focus ligt op fysieke hardheid, mentale weerbaarheid en spirituele groei.</p>
+              <div class="grid grid-cols-2 gap-8">
+                <div class="border-t-4 border-kyokushin-red pt-4">
+                  <h4 class="text-2xl font-bold mb-2">OSU!</h4>
+                  <p class="text-slate-500 text-sm">Onze groet staat voor geduld, respect en waardering.</p>
+                </div>
+                <div class="border-t-4 border-kyokushin-red pt-4">
+                  <h4 class="text-2xl font-bold mb-2">DOJO</h4>
+                  <p class="text-slate-500 text-sm">Een plek van training, respect en broederschap.</p>
+                </div>
               </div>
-              <h3 class="text-xl font-bold mb-4">Zelfverdediging</h3>
-              <p class="text-slate-600">Leer effectieve technieken om jezelf te beschermen in elke situatie.</p>
             </div>
-            <div class="text-center">
-              <div class="w-16 h-16 bg-red-100 text-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-              </div>
-              <h3 class="text-xl font-bold mb-4">Discipline</h3>
-              <p class="text-slate-600">Ontwikkel mentale kracht en focus die je in het dagelijks leven kunt toepassen.</p>
-            </div>
-            <div class="text-center">
-              <div class="w-16 h-16 bg-red-100 text-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-              </div>
-              <h3 class="text-xl font-bold mb-4">Community</h3>
-              <p class="text-slate-600">Word onderdeel van een hechte groep die elkaar motiveert en ondersteunt.</p>
+            <div class="relative">
+              <div class="absolute -top-4 -left-4 w-full h-full border-8 border-kyokushin-red z-0"></div>
+              <img src="https://picsum.photos/seed/kyokushin_sensei/800/1000" alt="Sensei" class="relative z-10 shadow-2xl grayscale" referrerPolicy="no-referrer">
             </div>
           </div>
         </div>
       </section>
 
-      <section class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
-          <div class="md:w-1/2">
-            <img src="https://picsum.photos/seed/karate2/800/600" alt="Sensei" class="rounded-2xl shadow-xl" referrerPolicy="no-referrer">
+      <section class="py-32 bg-kyokushin-black text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-24">
+            <h2 class="text-5xl md:text-8xl font-black uppercase italic mb-4">WAAROM <span class="text-kyokushin-red">ONS?</span></h2>
           </div>
-          <div class="md:w-1/2">
-            <h2 class="section-title">Onze Filosofie</h2>
-            <p class="text-lg text-slate-600 mb-6">Bij Karateschool Zen geloven we dat karate meer is dan alleen een sport. Het is een weg naar persoonlijke groei. Onze ervaren instructeurs begeleiden je stap voor stap, of je nu een beginner bent of een gevorderde karateka.</p>
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-center gap-3 text-slate-700 font-medium">
-                <span class="w-6 h-6 bg-red-700 text-white rounded-full flex items-center justify-center text-xs">✓</span>
-                Traditionele Shotokan Karate
-              </li>
-              <li class="flex items-center gap-3 text-slate-700 font-medium">
-                <span class="w-6 h-6 bg-red-700 text-white rounded-full flex items-center justify-center text-xs">✓</span>
-                Gediplomeerde instructeurs
-              </li>
-              <li class="flex items-center gap-3 text-slate-700 font-medium">
-                <span class="w-6 h-6 bg-red-700 text-white rounded-full flex items-center justify-center text-xs">✓</span>
-                Lessen voor kinderen vanaf 6 jaar
-              </li>
-            </ul>
-            <a href="/lessen.html" class="text-red-700 font-bold hover:underline">Bekijk onze lesroosters &rarr;</a>
+          <div class="grid md:grid-cols-3 gap-16">
+            <div class="group">
+              <div class="text-8xl font-black text-white/10 group-hover:text-kyokushin-red/20 transition-colors mb-[-40px]">01</div>
+              <h3 class="text-3xl font-bold mb-6 relative z-10">FULL CONTACT</h3>
+              <p class="text-slate-400 leading-relaxed">Wij trainen op de traditionele manier. Full-contact sparring voor wie de uitdaging aan durft.</p>
+            </div>
+            <div class="group">
+              <div class="text-8xl font-black text-white/10 group-hover:text-kyokushin-red/20 transition-colors mb-[-40px]">02</div>
+              <h3 class="text-3xl font-bold mb-6 relative z-10">DISCIPLINE</h3>
+              <p class="text-slate-400 leading-relaxed">Geen excuses. Wij verleggen grenzen en bouwen aan een onverwoestbaar karakter.</p>
+            </div>
+            <div class="group">
+              <div class="text-8xl font-black text-white/10 group-hover:text-kyokushin-red/20 transition-colors mb-[-40px]">03</div>
+              <h3 class="text-3xl font-bold mb-6 relative z-10">TRADITIE</h3>
+              <p class="text-slate-400 leading-relaxed">Wij volgen de weg van Sosai Mas Oyama. Eerlijkheid, nederigheid en kracht.</p>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12">
+    <footer class="bg-kyokushin-black text-white py-24 border-t-8 border-kyokushin-red">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <span class="text-xl font-black text-red-500 tracking-tighter">ZEN KARATE</span>
-            <p class="mt-4 text-slate-400 text-sm">De plek voor traditionele karate en persoonlijke ontwikkeling in de regio.</p>
+        <div class="grid md:grid-cols-4 gap-16 mb-16">
+          <div class="col-span-2">
+            <div class="flex items-center gap-4 mb-8">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Kyokushin_Kanku.svg/1200px-Kyokushin_Kanku.svg.png" alt="Kanku" class="h-16 w-16">
+              <span class="text-4xl font-black tracking-tighter">KYOKUSHIN <span class="text-kyokushin-red">LEIDEN</span></span>
+            </div>
+            <p class="text-slate-400 text-lg max-w-md">De officiële dojo voor Kyokushinkai Karate in Leiden. Sluit je aan bij de sterkste karate familie.</p>
           </div>
           <div>
-            <h4 class="font-bold mb-4">Navigatie</h4>
-            <ul class="space-y-2 text-slate-400 text-sm">
-              <li><a href="/" class="hover:text-white">Home</a></li>
-              <li><a href="/lessen.html" class="hover:text-white">Lessen</a></li>
-              <li><a href="/tarieven.html" class="hover:text-white">Tarieven</a></li>
-              <li><a href="/gallery.html" class="hover:text-white">Galerij</a></li>
+            <h4 class="text-xl font-bold mb-8 text-kyokushin-red">NAVIGATIE</h4>
+            <ul class="space-y-4 text-slate-400 font-bold uppercase tracking-widest text-sm">
+              <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="/lessen.html" class="hover:text-white transition-colors">Lessen</a></li>
+              <li><a href="/tarieven.html" class="hover:text-white transition-colors">Tarieven</a></li>
+              <li><a href="/gallery.html" class="hover:text-white transition-colors">Galerij</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-bold mb-4">Contact</h4>
-            <ul class="space-y-2 text-slate-400 text-sm">
-              <li>Dojo Straat 123</li>
-              <li>1234 AB Karate Stad</li>
-              <li>info@karateschoolzen.nl</li>
-              <li>06-12345678</li>
+            <h4 class="text-xl font-bold mb-8 text-kyokushin-red">CONTACT</h4>
+            <ul class="space-y-4 text-slate-400 text-sm font-bold">
+              <li>LEIDEN DOJO</li>
+              <li>SPORTLAAN 45</li>
+              <li>INFO@KYOKUSHINLEIDEN.NL</li>
+              <li>071 - 123 456 78</li>
             </ul>
-          </div>
-          <div>
-            <h4 class="font-bold mb-4">Beheer</h4>
-            <a href="/admin/" class="text-xs bg-slate-800 px-3 py-1 rounded hover:bg-slate-700 transition-colors">CMS Login</a>
           </div>
         </div>
-        <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-xs">
-          &copy; 2024 Karateschool Zen. Alle rechten voorbehouden.
+        <div class="flex flex-col md:flex-row justify-between items-center pt-16 border-t border-white/10 text-slate-500 text-xs font-bold uppercase tracking-widest">
+          <p>&copy; 2024 KYOKUSHIN LEIDEN. ALL RIGHTS RESERVED.</p>
+          <a href="/admin/" class="mt-4 md:mt-0 hover:text-white">CMS ACCESS</a>
         </div>
       </div>
     </footer>
