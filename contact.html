@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Karateschool Zen</title>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="/" class="text-2xl font-black text-red-700 tracking-tighter">ZEN KARATE</a>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/lessen.html" class="nav-link">Lessen</a>
+            <a href="/tarieven.html" class="nav-link">Tarieven</a>
+            <a href="/gallery.html" class="nav-link">Galerij</a>
+            <a href="/contact.html" class="nav-link text-red-700">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow">
+      <section class="py-16 bg-red-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl md:text-5xl font-black mb-4">CONTACT</h1>
+          <p class="text-xl text-red-100">Heb je vragen of wil je een proefles aanvragen? Neem contact op!</p>
+        </div>
+      </section>
+
+      <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid md:grid-cols-2 gap-16">
+            <div>
+              <h2 class="text-2xl font-bold mb-8">Stuur ons een bericht</h2>
+              <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Naam</label>
+                  <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-red-700 focus:border-transparent outline-none transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">E-mail</label>
+                  <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-red-700 focus:border-transparent outline-none transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Onderwerp</label>
+                  <select name="subject" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-red-700 focus:border-transparent outline-none transition-all">
+                    <option>Gratis Proefles</option>
+                    <option>Informatie over lessen</option>
+                    <option>Andere vraag</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Bericht</label>
+                  <textarea name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-red-700 focus:border-transparent outline-none transition-all"></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full">Verstuur Bericht</button>
+              </form>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-bold mb-8">Onze Locatie</h2>
+              <div class="bg-slate-100 rounded-2xl p-8 mb-8">
+                <div class="space-y-6">
+                  <div class="flex items-start gap-4">
+                    <div class="text-red-700 mt-1">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-bold">Adres</h4>
+                      <p class="text-slate-600">Dojo Straat 123<br>1234 AB Karate Stad</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div class="text-red-700 mt-1">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-bold">E-mail</h4>
+                      <p class="text-slate-600">info@karateschoolzen.nl</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div class="text-red-700 mt-1">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div>
+                      <h4 class="font-bold">Socials</h4>
+                      <div class="flex gap-4 mt-2">
+                        <a href="#" class="text-slate-400 hover:text-red-700 transition-colors font-bold">Instagram</a>
+                        <a href="#" class="text-slate-400 hover:text-red-700 transition-colors font-bold">Facebook</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Placeholder for map -->
+              <div class="w-full h-64 bg-slate-200 rounded-2xl overflow-hidden relative">
+                <img src="https://picsum.photos/seed/map/800/400" alt="Map placeholder" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/10">
+                  <span class="bg-white px-4 py-2 rounded-lg shadow-lg font-bold text-sm">Locatie Kaart</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-slate-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-slate-500 text-sm">&copy; 2024 Karateschool Zen. <a href="/admin/" class="hover:text-white">Admin</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

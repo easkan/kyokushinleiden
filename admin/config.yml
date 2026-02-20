@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main # Zorg dat dit overeenkomt met je default branch op GitHub
+
+media_folder: "uploads" # Map waar afbeeldingen worden opgeslagen
+public_folder: "/uploads" # Publieke URL naar de afbeeldingen
+
+collections:
+  - name: "gallery"
+    label: "Foto Galerij"
+    label_singular: "Foto"
+    file: "data/photos.json"
+    extension: "json"
+    format: "json"
+    create: false # We beheren de lijst in één bestand
+    fields:
+      - label: "Foto's"
+        name: "items"
+        widget: "list"
+        fields:
+          - { label: "Afbeelding", name: "image", widget: "image" }
+          - { label: "Onderschrift", name: "caption", widget: "string", required: false }

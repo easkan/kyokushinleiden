@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karateschool Zen | Home</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <span class="text-2xl font-black text-red-700 tracking-tighter">ZEN KARATE</span>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class="nav-link text-red-700">Home</a>
+            <a href="/lessen.html" class="nav-link">Lessen</a>
+            <a href="/tarieven.html" class="nav-link">Tarieven</a>
+            <a href="/gallery.html" class="nav-link">Galerij</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
+          </div>
+          <div class="md:hidden">
+            <!-- Mobile menu button (simplified) -->
+            <button type="button" class="text-slate-600 p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-2">
+        <a href="/" class="block nav-link">Home</a>
+        <a href="/lessen.html" class="block nav-link">Lessen</a>
+        <a href="/tarieven.html" class="block nav-link">Tarieven</a>
+        <a href="/gallery.html" class="block nav-link">Galerij</a>
+        <a href="/contact.html" class="block nav-link">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[80vh] flex items-center overflow-hidden bg-slate-900">
+      <img src="https://picsum.photos/seed/karate1/1920/1080" alt="Karate training" class="absolute inset-0 w-full h-full object-cover opacity-40" referrerPolicy="no-referrer">
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">ONTDEK DE KRACHT<br><span class="text-red-500">BINNENIN JEZELF</span></h1>
+        <p class="text-xl md:text-2xl mb-10 max-w-2xl text-slate-200">Karateschool Zen biedt trainingen voor alle leeftijden. Focus op discipline, zelfverdediging en fysieke fitheid.</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact.html" class="btn-primary text-center">Gratis Proefles</a>
+          <a href="/lessen.html" class="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-slate-900 transition-all text-center">Bekijk Lessen</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Info Sections -->
+    <main class="flex-grow">
+      <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-100 text-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Zelfverdediging</h3>
+              <p class="text-slate-600">Leer effectieve technieken om jezelf te beschermen in elke situatie.</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-100 text-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Discipline</h3>
+              <p class="text-slate-600">Ontwikkel mentale kracht en focus die je in het dagelijks leven kunt toepassen.</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-100 text-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Community</h3>
+              <p class="text-slate-600">Word onderdeel van een hechte groep die elkaar motiveert en ondersteunt.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/2">
+            <img src="https://picsum.photos/seed/karate2/800/600" alt="Sensei" class="rounded-2xl shadow-xl" referrerPolicy="no-referrer">
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="section-title">Onze Filosofie</h2>
+            <p class="text-lg text-slate-600 mb-6">Bij Karateschool Zen geloven we dat karate meer is dan alleen een sport. Het is een weg naar persoonlijke groei. Onze ervaren instructeurs begeleiden je stap voor stap, of je nu een beginner bent of een gevorderde karateka.</p>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center gap-3 text-slate-700 font-medium">
+                <span class="w-6 h-6 bg-red-700 text-white rounded-full flex items-center justify-center text-xs">✓</span>
+                Traditionele Shotokan Karate
+              </li>
+              <li class="flex items-center gap-3 text-slate-700 font-medium">
+                <span class="w-6 h-6 bg-red-700 text-white rounded-full flex items-center justify-center text-xs">✓</span>
+                Gediplomeerde instructeurs
+              </li>
+              <li class="flex items-center gap-3 text-slate-700 font-medium">
+                <span class="w-6 h-6 bg-red-700 text-white rounded-full flex items-center justify-center text-xs">✓</span>
+                Lessen voor kinderen vanaf 6 jaar
+              </li>
+            </ul>
+            <a href="/lessen.html" class="text-red-700 font-bold hover:underline">Bekijk onze lesroosters &rarr;</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <span class="text-xl font-black text-red-500 tracking-tighter">ZEN KARATE</span>
+            <p class="mt-4 text-slate-400 text-sm">De plek voor traditionele karate en persoonlijke ontwikkeling in de regio.</p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Navigatie</h4>
+            <ul class="space-y-2 text-slate-400 text-sm">
+              <li><a href="/" class="hover:text-white">Home</a></li>
+              <li><a href="/lessen.html" class="hover:text-white">Lessen</a></li>
+              <li><a href="/tarieven.html" class="hover:text-white">Tarieven</a></li>
+              <li><a href="/gallery.html" class="hover:text-white">Galerij</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Contact</h4>
+            <ul class="space-y-2 text-slate-400 text-sm">
+              <li>Dojo Straat 123</li>
+              <li>1234 AB Karate Stad</li>
+              <li>info@karateschoolzen.nl</li>
+              <li>06-12345678</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Beheer</h4>
+            <a href="/admin/" class="text-xs bg-slate-800 px-3 py-1 rounded hover:bg-slate-700 transition-colors">CMS Login</a>
+          </div>
+        </div>
+        <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-xs">
+          &copy; 2024 Karateschool Zen. Alle rechten voorbehouden.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
