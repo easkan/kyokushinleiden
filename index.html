@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kyokushin Karate Leiden | Osu!</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body class="flex flex-col min-h-screen">
@@ -183,21 +182,10 @@
         </div>
         <div class="flex flex-col md:flex-row justify-between items-center pt-16 border-t border-white/10 text-slate-500 text-xs font-bold uppercase tracking-widest">
           <p>&copy; 2024 KYOKUSHIN LEIDEN. ALL RIGHTS RESERVED.</p>
-          <a href="/admin/" class="mt-4 md:mt-0 hover:text-white">CMS ACCESS</a>
+          <a href="/admin.html" class="mt-4 md:mt-0 hover:text-white">CMS ACCESS</a>
         </div>
       </div>
     </footer>
 
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
   </body>
 </html>
