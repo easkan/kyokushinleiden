@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Galerij | Kyokushin Leiden</title>
+    <title>Admin Upload | Kyokushin Karate Leiden</title>
     <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body class="flex flex-col min-h-screen">
@@ -11,18 +11,16 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-24 items-center">
           <div class="flex-shrink-0 flex items-center gap-4">
-            <a href="/" class="flex items-center gap-4">
-              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-16 w-auto">
-              <div class="flex flex-col">
-                <span class="text-2xl font-black text-kyokushin-black leading-none">KYOKUSHIN</span>
-                <span class="text-lg font-bold text-kyokushin-red leading-none">LEIDEN</span>
-              </div>
-            </a>
+            <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-16 w-auto">
+            <div class="flex flex-col">
+              <span class="text-2xl font-black text-kyokushin-black leading-none">KYOKUSHIN</span>
+              <span class="text-lg font-bold text-kyokushin-red leading-none">LEIDEN</span>
+            </div>
           </div>
           <div class="hidden md:flex space-x-8">
-            <a href="/" class="nav-link">Home</a>
+            <a href="/" class="nav-link text-kyokushin-red">Home</a>
             <a href="/lessen.html" class="nav-link">Lessen</a>
-            <a href="/gallery.html" class="nav-link text-kyokushin-red">Galerij</a>
+            <a href="/gallery.html" class="nav-link">Galerij</a>
             <a href="/contact.html" class="nav-link">Contact</a>
           </div>
           <div class="md:hidden">
@@ -42,29 +40,51 @@
       </div>
     </nav>
 
-    <main class="flex-grow overflow-x-hidden">
-      <section class="py-32 bg-kyokushin-black text-white relative overflow-hidden">
-        <div class="absolute inset-0 kanku-bg opacity-10"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 class="text-6xl md:text-8xl font-black mb-8 italic uppercase">FOTO <span class="text-kyokushin-red">GALERIJ</span></h1>
-          <p class="text-xl text-slate-400 max-w-2xl">Actiebeelden uit onze dojo. Kracht, techniek en doorzettingsvermogen.</p>
-        </div>
-      </section>
+    <main class="flex-grow">
+      <section class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tighter text-kyokushin-black">
+              Admin <span class="text-kyokushin-red">Upload</span>
+            </h1>
+            <p class="mt-4 text-slate-600 text-lg">
+              Upload foto’s vanaf je telefoon en voeg (optioneel) een onderschrift toe.
+            </p>
+          </div>
 
-      <section class="py-32 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Photos will be loaded here via JS -->
-            <div class="col-span-full py-32 text-center" id="loading-state">
-              <div class="inline-block w-12 h-12 border-8 border-slate-200 border-t-kyokushin-red rounded-full animate-spin mb-4"></div>
-              <p class="text-xl font-black uppercase tracking-widest text-slate-400">Laden...</p>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
+            <label class="block text-sm font-bold uppercase tracking-widest text-slate-600">
+              Beheer wachtwoord
+              <input id="admin-password" type="password" class="mt-3 w-full rounded-xl border border-slate-300 px-4 py-3 text-base" autocomplete="current-password" />
+            </label>
+
+            <button id="upload-btn" type="button"
+              class="mt-6 w-full rounded-xl bg-kyokushin-red text-white font-black uppercase tracking-widest py-4 hover:opacity-90 transition">
+              Foto uploaden
+            </button>
+
+            <div id="preview-wrap" class="hidden mt-8">
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+                <img id="preview-img" alt="Preview" class="w-full h-auto block" />
+              </div>
+
+              <label class="block mt-6 text-sm font-bold uppercase tracking-widest text-slate-600">
+                Onderschrift (optioneel)
+                <input id="caption" type="text" class="mt-3 w-full rounded-xl border border-slate-300 px-4 py-3 text-base" />
+              </label>
+
+              <button id="save-btn" type="button"
+                class="mt-6 w-full rounded-xl bg-kyokushin-black text-white font-black uppercase tracking-widest py-4 hover:opacity-90 transition">
+                Opslaan
+              </button>
             </div>
+
+            <p id="status" class="mt-6 text-sm text-slate-600"></p>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-kyokushin-black text-white py-24 border-t-8 border-kyokushin-red">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-4 gap-16 mb-16">
@@ -81,8 +101,7 @@
               <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
               <li><a href="/lessen.html" class="hover:text-white transition-colors">Lessen</a></li>
               <li><a href="/gallery.html" class="hover:text-white transition-colors">Galerij</a></li>
-            
-              <li><a href="/upload.html" class="hover:text-white transition-colors">Admin</a></li></ul>
+            </ul>
           </div>
           <div>
             <h4 class="text-xl font-bold mb-8 text-kyokushin-red">CONTACT</h4>
@@ -101,6 +120,6 @@
       </div>
     </footer>
 
-    <script type="module" src="/src/js/gallery.js"></script>
+    <script type="module" src="/src/js/upload.js"></script>
   </body>
 </html>

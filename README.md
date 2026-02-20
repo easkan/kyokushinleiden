@@ -63,3 +63,35 @@ Volg deze stappen om de site live te zetten met een werkend CMS:
 
 ## Contactformulier
 Het formulier op `contact.html` maakt gebruik van **Netlify Forms**. Inzendingen verschijnen automatisch in het Netlify dashboard onder het tabblad **"Forms"**.
+
+
+## Admin foto upload (Cloudinary)
+
+Deze site gebruikt Cloudinary voor uploads en Netlify Functions om captions + volgorde op te slaan.
+
+### 1) Cloudinary (unsigned preset)
+Maak in Cloudinary een **Unsigned Upload Preset** aan met exact deze presetnaam (hoofdlettergevoelig).
+Bijvoorbeeld: `Kyokushin`
+
+### 2) Netlify Environment Variables
+Voeg in Netlify deze environment variables toe en redeploy:
+
+- `VITE_CLOUDINARY_CLOUD_NAME`
+- `VITE_CLOUDINARY_UPLOAD_PRESET` (bijv. `Kyokushin`)
+- `UPLOAD_PASSWORD` (beheer wachtwoord)
+
+### 3) URLs
+- Upload (admin): `/upload.html`
+- Galerij: `/gallery.html`
+
+### 4) Lokale dev
+```bash
+npm install
+npm run dev
+```
+
+> Netlify Functions test je lokaal het makkelijkst met:
+```bash
+npm i -g netlify-cli
+netlify dev
+```

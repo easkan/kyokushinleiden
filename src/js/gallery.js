@@ -4,66 +4,53 @@ async function loadGallery() {
     console.error('Gallery container element not found');
     return;
   }
-  
+
   const loadingState = document.getElementById('loading-state');
 
   try {
-    // Hardcoded photos since CMS is removed
-    const photos = [
-      {
-        image: "https://picsum.photos/seed/karate3/800/800",
-        caption: "Training in de dojo"
-      },
-      {
-        image: "https://picsum.photos/seed/karate4/800/800",
-        caption: "Focus en techniek"
-      },
-      {
-        image: "https://picsum.photos/seed/karate5/800/800",
-        caption: "Groepsles jeugd"
-      }
-    ];
+    const res = await fetch('/.netlify/functions/gallery-list', { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error(await res.text());
+    }
+    const items = await res.json(); // [{id, imageUrl, caption, createdAt, publicId}]
 
-    if (photos.length === 0) {
+    if (!Array.isArray(items) || items.length === 0) {
       container.innerHTML = `
         <div class="col-span-full py-20 text-center text-slate-400">
-          Nog geen foto's beschikbaar.
+          <p class="text-xl font-bold mb-2">Nog geen foto’s</p>
+          <p>Upload de eerste foto via Admin.</p>
         </div>
       `;
+      if (loadingState) loadingState.style.display = 'none';
       return;
     }
 
-    // Clear container
-    container.innerHTML = '';
-
-    // Render photos
-    photos.forEach(photo => {
-      const photoCard = document.createElement('div');
-      photoCard.className = 'group relative overflow-hidden border-4 border-kyokushin-black aspect-square shadow-xl hover:border-kyokushin-red transition-all duration-300';
-      
-      photoCard.innerHTML = `
-        <img src="${photo.image}" alt="${photo.caption || 'Karate foto'}" 
-             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" 
-             loading="lazy"
-             referrerPolicy="no-referrer">
-        <div class="absolute inset-0 bg-gradient-to-t from-kyokushin-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-          <p class="text-white font-black uppercase italic tracking-widest text-lg">${photo.caption || ''}</p>
+    container.innerHTML = items.map((item) => {
+      const img = item.imageUrl || item.image || '';
+      const caption = item.caption || '';
+      return `
+        <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+          <img src="${img}" alt="${caption}" class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          ${caption ? `
+            <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+              <p class="text-white text-sm font-bold">${caption}</p>
+            </div>
+          ` : ''}
         </div>
       `;
-      
-      container.appendChild(photoCard);
-    });
+    }).join('');
 
+    if (loadingState) loadingState.style.display = 'none';
   } catch (error) {
-    console.error('Gallery error:', error);
+    console.error('Error loading gallery:', error);
     container.innerHTML = `
-      <div class="col-span-full py-20 text-center">
-        <p class="text-red-500 mb-4">Er is een fout opgetreden bij het laden van de galerij.</p>
-        <button onclick="location.reload()" class="px-4 py-2 bg-red-700 text-white rounded-lg font-bold">Opnieuw proberen</button>
+      <div class="col-span-full py-20 text-center text-slate-400">
+        <p class="text-xl font-bold mb-2">Kon galerij niet laden</p>
+        <p>${String(error).replaceAll('<','&lt;').replaceAll('>','&gt;')}</p>
       </div>
     `;
+    if (loadingState) loadingState.style.display = 'none';
   }
 }
 
-// Initialize gallery
-loadGallery();
+document.addEventListener('DOMContentLoaded', loadGallery);
