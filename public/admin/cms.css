@@ -1,0 +1,41 @@
+/* Custom CSS for Decap CMS to improve mobile experience */
+
+/* Ensure the editor container doesn't overflow */
+.nc-app-container {
+  overflow-x: hidden !important;
+}
+
+/* Improve mobile layout for the editor */
+@media (max-width: 768px) {
+  /* Hide the preview pane by default on mobile to save space */
+  .nc-entryEditor-controlPane.nc-entryEditor-previewPane {
+    display: none !important;
+  }
+
+  /* Make the editor take full width */
+  .nc-entryEditor-controlPane {
+    width: 100% !important;
+    padding: 15px !important;
+  }
+
+  /* Adjust header for mobile */
+  .nc-app-header {
+    padding: 0 10px !important;
+  }
+
+  /* Make buttons more touch-friendly */
+  .nc-app-header-button {
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+  }
+
+  /* Ensure the login widget is centered and fits */
+  #netlify-identity-widget {
+    max-width: 95vw !important;
+  }
+}
+
+/* Branding for the CMS */
+.nc-app-header-logo {
+  filter: grayscale(1) brightness(2);
+}
