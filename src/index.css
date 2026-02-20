@@ -1,35 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@400;700;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-kyokushin-red: #E31E24;
-  --color-kyokushin-black: #1A1A1A;
-  
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", sans-serif;
+  --color-kyokushin-red: #D32F2F;
+  --color-kyokushin-black: #121212;
 }
 
 @layer base {
+  html, body {
+    @apply overflow-x-hidden w-full relative;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   body {
-    @apply bg-white text-kyokushin-black font-sans;
+    @apply font-sans text-slate-900 bg-white;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-display uppercase tracking-tight;
   }
 }
 
 @layer components {
+  .btn-kyokushin {
+    @apply inline-block px-8 py-4 bg-kyokushin-red text-white font-bold uppercase tracking-widest hover:bg-black transition-all duration-300 transform hover:-translate-y-1 shadow-lg;
+  }
+  
   .nav-link {
-    @apply text-sm font-black uppercase tracking-[0.2em] hover:text-kyokushin-red transition-colors duration-300;
+    @apply text-slate-800 hover:text-kyokushin-red font-bold uppercase tracking-wider text-sm transition-colors;
   }
-
-  .btn-primary {
-    @apply bg-kyokushin-red text-white px-10 py-5 text-sm font-black uppercase tracking-[0.3em] italic hover:bg-white hover:text-kyokushin-red border-2 border-kyokushin-red transition-all duration-300 inline-block;
-  }
-
-  .btn-secondary {
-    @apply bg-transparent text-white px-10 py-5 text-sm font-black uppercase tracking-[0.3em] italic border-2 border-white hover:bg-white hover:text-kyokushin-black transition-all duration-300 inline-block;
+  
+  .section-title {
+    @apply text-4xl md:text-6xl font-black text-kyokushin-black mb-8 border-l-8 border-kyokushin-red pl-6;
   }
 
   .kanku-bg {
-    background-image: url('https://6992610d681c79fa0bce099b.imgix.net/kanku-symbol.png');
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Kyokushin_Kanku.svg/1200px-Kyokushin_Kanku.svg.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    opacity: 0.05;
   }
 }

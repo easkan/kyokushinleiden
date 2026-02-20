@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "image": "https://picsum.photos/seed/karate3/800/800",
+      "caption": "Training in de dojo"
+    },
+    {
+      "image": "https://picsum.photos/seed/karate4/800/800",
+      "caption": "Focus en techniek"
+    },
+    {
+      "image": "https://picsum.photos/seed/karate5/800/800",
+      "caption": "Groepsles jeugd"
+    }
+  ]
+}
