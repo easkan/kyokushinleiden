@@ -14,7 +14,6 @@ export default defineConfig(({mode}) => {
           tarieven: path.resolve(__dirname, 'tarieven.html'),
           gallery: path.resolve(__dirname, 'gallery.html'),
           contact: path.resolve(__dirname, 'contact.html'),
-          admin: path.resolve(__dirname, 'admin/index.html'),
         },
       },
     },

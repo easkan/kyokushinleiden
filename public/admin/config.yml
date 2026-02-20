@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads" # Path relative to the repo root
+public_folder: "/uploads"      # Path relative to the site root
+
+collections:
+  - name: "gallery"
+    label: "Foto Galerij"
+    label_singular: "Foto"
+    file: "public/data/photos.json" # Path relative to the repo root
+    extension: "json"
+    format: "json"
+    create: false
+    fields:
+      - label: "Foto's"
+        name: "items"
+        widget: "list"
+        fields:
+          - { label: "Afbeelding", name: "image", widget: "image" }
+          - { label: "Onderschrift", name: "caption", widget: "string", required: false }
