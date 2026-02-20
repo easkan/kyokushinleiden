@@ -10,9 +10,6 @@ export default defineConfig(({mode}) => {
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, 'index.html'),
-          lessen: path.resolve(__dirname, 'lessen.html'),
-          gallery: path.resolve(__dirname, 'gallery.html'),
-          contact: path.resolve(__dirname, 'contact.html'),
         },
       },
     },
