@@ -1,6 +1,7 @@
 {
   "items": [
     {
+<<<<<<< HEAD
       "image": "https://picsum.photos/seed/karate3/800/800",
       "caption": "Training in de dojo"
     },
@@ -11,6 +12,9 @@
     {
       "image": "https://picsum.photos/seed/karate5/800/800",
       "caption": "Groepsles jeugd"
+=======
+      "image": "/uploads/ibk-training-leiden.png"
+>>>>>>> 71da0a03900a2737589e73961884a48bb5a0cfaf
     }
   ]
 }
