@@ -12,7 +12,7 @@
         <div class="flex justify-between h-24 items-center">
           <div class="flex-shrink-0 flex items-center gap-4">
             <a href="/" class="flex items-center gap-4">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Kyokushin_Kanku.svg/1200px-Kyokushin_Kanku.svg.png" alt="Kanku" class="h-12 w-12">
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-16 w-auto">
               <div class="flex flex-col">
                 <span class="text-2xl font-black text-kyokushin-black leading-none">KYOKUSHIN</span>
                 <span class="text-lg font-bold text-kyokushin-red leading-none">LEIDEN</span>
@@ -22,15 +22,27 @@
           <div class="hidden md:flex space-x-8">
             <a href="/" class="nav-link">Home</a>
             <a href="/lessen.html" class="nav-link text-kyokushin-red">Lessen</a>
-            <a href="/tarieven.html" class="nav-link">Tarieven</a>
             <a href="/gallery.html" class="nav-link">Galerij</a>
             <a href="/contact.html" class="nav-link">Contact</a>
           </div>
+          <div class="md:hidden">
+            <button type="button" class="text-kyokushin-black p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-6 space-y-4">
+        <a href="/" class="block nav-link">Home</a>
+        <a href="/lessen.html" class="block nav-link">Lessen</a>
+        <a href="/gallery.html" class="block nav-link">Galerij</a>
+        <a href="/contact.html" class="block nav-link">Contact</a>
       </div>
     </nav>
 
-    <main class="flex-grow">
+    <main class="flex-grow overflow-x-hidden">
       <section class="py-32 bg-kyokushin-black text-white relative overflow-hidden">
         <div class="absolute inset-0 kanku-bg opacity-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -100,7 +112,7 @@
         <div class="grid md:grid-cols-4 gap-16 mb-16">
           <div class="col-span-2">
             <div class="flex items-center gap-4 mb-8">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Kyokushin_Kanku.svg/1200px-Kyokushin_Kanku.svg.png" alt="Kanku" class="h-16 w-16">
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-24 w-auto">
               <span class="text-4xl font-black tracking-tighter">KYOKUSHIN <span class="text-kyokushin-red">LEIDEN</span></span>
             </div>
             <p class="text-slate-400 text-lg max-w-md">De officiële dojo voor Kyokushinkai Karate in Leiden. Sluit je aan bij de sterkste karate familie.</p>
@@ -110,7 +122,6 @@
             <ul class="space-y-4 text-slate-400 font-bold uppercase tracking-widest text-sm">
               <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
               <li><a href="/lessen.html" class="hover:text-white transition-colors">Lessen</a></li>
-              <li><a href="/tarieven.html" class="hover:text-white transition-colors">Tarieven</a></li>
               <li><a href="/gallery.html" class="hover:text-white transition-colors">Galerij</a></li>
             </ul>
           </div>
