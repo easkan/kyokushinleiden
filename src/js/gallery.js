@@ -8,7 +8,7 @@ async function loadGallery() {
   const loadingState = document.getElementById('loading-state');
 
   try {
-    const fetchPath = '/api/photos';
+    const fetchPath = window.location.pathname.includes('admin') ? '../data/photos.json' : 'data/photos.json';
     console.log('Fetching photos from:', fetchPath);
     const response = await fetch(fetchPath);
     
