@@ -1,41 +1,132 @@
 /* Custom CSS for Decap CMS to improve mobile experience */
 
-/* Ensure the editor container doesn't overflow */
-.nc-app-container {
-  overflow-x: hidden !important;
+/* 
+  Redesign for Decap CMS Admin Panel 
+  Focus: Mobile Reachability and Usability
+*/
+
+:root {
+  --primary-red: #D32F2F;
+  --dark-bg: #121212;
 }
 
-/* Improve mobile layout for the editor */
-@media (max-width: 768px) {
-  /* Hide the preview pane by default on mobile to save space */
-  .nc-entryEditor-controlPane.nc-entryEditor-previewPane {
-    display: none !important;
+/* Global resets for the CMS app */
+.nc-app-container {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* --- MOBILE OPTIMIZATIONS (Max-width: 800px) --- */
+@media (max-width: 800px) {
+  /* 1. Header Redesign */
+  .nc-app-header {
+    height: 56px !important;
+    padding: 0 8px !important;
+    background-color: var(--dark-bg) !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
   }
 
-  /* Make the editor take full width */
+  .nc-app-header-logo {
+    height: 32px !important;
+    margin-right: 8px !important;
+  }
+
+  /* 2. Sidebar / Collection List */
+  .nc-app-sidebar {
+    width: 100% !important;
+    position: relative !important;
+    height: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* 3. Main View Area */
+  .nc-app-main-view {
+    padding: 0 !important;
+  }
+
+  /* 4. Collection Page (List of entries) */
+  .nc-collectionPage-sidebar {
+    display: none !important; /* Hide secondary sidebar on mobile */
+  }
+
+  .nc-collectionPage-content {
+    padding: 12px !important;
+  }
+
+  /* Make cards larger and easier to tap */
+  .nc-collectionPage-listCard {
+    margin-bottom: 16px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    padding: 16px !important;
+  }
+
+  /* 5. Editor Redesign (Crucial) */
+  .nc-entryEditor-controlPane.nc-entryEditor-previewPane {
+    display: none !important; /* Force hide preview */
+  }
+
   .nc-entryEditor-controlPane {
     width: 100% !important;
-    padding: 15px !important;
+    max-width: 100% !important;
+    padding: 16px !important;
+    margin-bottom: 80px !important; /* Space for fixed footer */
   }
 
-  /* Adjust header for mobile */
-  .nc-app-header {
-    padding: 0 10px !important;
-  }
-
-  /* Make buttons more touch-friendly */
+  /* Fix the "Save" and "Publish" buttons - Make them a fixed footer bar */
   .nc-app-header-button {
-    padding: 8px 12px !important;
-    font-size: 14px !important;
+    background-color: var(--primary-red) !important;
+    color: white !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    font-size: 12px !important;
   }
 
-  /* Ensure the login widget is centered and fits */
-  #netlify-identity-widget {
-    max-width: 95vw !important;
+  /* Attempt to target the editor footer/toolbar if it exists */
+  .nc-entryEditor-toolbar {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    border-top: 2px solid var(--primary-red) !important;
+    padding: 12px !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    z-index: 9999 !important;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.1) !important;
+  }
+
+  /* Make inputs full width and large */
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+    padding: 12px !important;
+  }
+
+  /* Adjust the "Add New" button */
+  .nc-collectionPage-topBar-button {
+    width: 100% !important;
+    margin-top: 10px !important;
+    padding: 12px !important;
+    text-align: center !important;
   }
 }
 
-/* Branding for the CMS */
-.nc-app-header-logo {
-  filter: grayscale(1) brightness(2);
+/* --- BRANDING & POLISH --- */
+.nc-app-header {
+  border-bottom: 4px solid var(--primary-red) !important;
 }
+
+/* Custom scrollbar for the CMS */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
