@@ -19,20 +19,21 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || "{}");
     const { id } = body;
 
-    if (!id) return { statusCode: 400, body: "Missing id" };
+    if (!id) {
+      return { statusCode: 400, body: "Missing id" };
+    }
 
     const store = getStore("gallery");
     const key = "gallery.json";
 
     const raw = (await store.get(key)) || "[]";
-    const items = (() => {
-      try {
-        const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed : [];
-      } catch {
-        return [];
-      }
-    })();
+    let items = [];
+    try {
+      const parsed = JSON.parse(raw);
+      items = Array.isArray(parsed) ? parsed : [];
+    } catch {
+      items = [];
+    }
 
     const next = items.filter((it) => it.id !== id);
     await store.set(key, JSON.stringify(next));
@@ -43,6 +44,6 @@ exports.handler = async (event) => {
       body: JSON.stringify({ ok: true }),
     };
   } catch (e) {
-    return { statusCode: 500, body: `Server error: ${String(e)}` };
+    return { statusCode: 500, body: "Server error: " + String(e) };
   }
 };

@@ -125,3 +125,49 @@ async function saveMeta() {
 
 if (els.uploadBtn) els.uploadBtn.addEventListener("click", openUploader);
 if (els.saveBtn) els.saveBtn.addEventListener("click", saveMeta);
+
+
+// ===== DELETE + LIST LOGIC ADDED =====
+async function loadItems() {
+  const container = document.getElementById("items");
+  if (!container) return;
+
+  const res = await fetch("/.netlify/functions/gallery-list", { cache: "no-store" });
+  const data = await res.json();
+  const items = Array.isArray(data) ? data : [];
+
+  container.innerHTML = items.map((it) => `
+    <div style="margin:12px 0">
+      <img src="${it.imageUrl}" style="width:100px;display:block" />
+      <div>${it.caption || ""}</div>
+      <button data-id="${it.id}" class="delete-btn">Verwijderen</button>
+    </div>
+  `).join("");
+
+  container.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const id = btn.getAttribute("data-id");
+      const passwordInput = document.getElementById("admin-password");
+      const password = passwordInput ? passwordInput.value : "";
+
+      if (!password) {
+        alert("Vul eerst het wachtwoord in.");
+        return;
+      }
+
+      await fetch("/.netlify/functions/gallery-delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-upload-password": password,
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      loadItems();
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", loadItems);
+// ===== END DELETE LOGIC =====
