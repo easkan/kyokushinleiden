@@ -4,7 +4,7 @@
   Redesign for Decap CMS Admin Panel 
   Focus: STRICT Mobile-Only Usability
 */
-
+body { outline: 6px solid red !important; }
 :root {
   --primary-red: #D32F2F;
   --dark-bg: #121212;
