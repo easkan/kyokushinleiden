@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Kyokushin Leiden</title>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <nav class="bg-white border-b-4 border-kyokushin-red sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-24 items-center">
+          <div class="flex-shrink-0 flex items-center gap-4">
+            <a href="/" class="flex items-center gap-4">
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-16 w-auto">
+              <div class="flex flex-col">
+                <span class="text-2xl font-black text-kyokushin-black leading-none">KYOKUSHIN</span>
+                <span class="text-lg font-bold text-kyokushin-red leading-none">LEIDEN</span>
+              </div>
+            </a>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/lessen.html" class="nav-link">Lessen</a>
+            <a href="/gallery.html" class="nav-link">Galerij</a>
+            <a href="/contact.html" class="nav-link text-kyokushin-red">Contact</a>
+          </div>
+          <div class="md:hidden">
+            <button type="button" class="text-kyokushin-black p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-6 space-y-4">
+        <a href="/" class="block nav-link">Home</a>
+        <a href="/lessen.html" class="block nav-link">Lessen</a>
+        <a href="/gallery.html" class="block nav-link">Galerij</a>
+        <a href="/contact.html" class="block nav-link">Contact</a>
+      </div>
+    </nav>
+
+    <main class="flex-grow overflow-x-hidden">
+      <section class="py-32 bg-kyokushin-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 kanku-bg opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h1 class="text-6xl md:text-8xl font-black mb-8 italic uppercase">NEEM <span class="text-kyokushin-red">CONTACT</span> OP</h1>
+          <p class="text-xl text-slate-400 max-w-2xl">Vragen over trainingen, lidmaatschap of een proefles? Wij staan voor je klaar. Osu!</p>
+        </div>
+      </section>
+
+      <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid md:grid-cols-2 gap-24">
+            <div>
+              <h2 class="text-4xl font-black mb-12 uppercase italic">STUUR EEN BERICHT</h2>
+              <form name="contact" method="POST" data-netlify="true" class="space-y-8">
+                <div>
+                  <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Naam</label>
+                  <input type="text" name="name" required class="w-full px-6 py-4 border-4 border-kyokushin-black focus:border-kyokushin-red outline-none transition-colors font-bold">
+                </div>
+                <div>
+                  <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">E-mail</label>
+                  <input type="email" name="email" required class="w-full px-6 py-4 border-4 border-kyokushin-black focus:border-kyokushin-red outline-none transition-colors font-bold">
+                </div>
+                <div>
+                  <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Onderwerp</label>
+                  <select name="subject" class="w-full px-6 py-4 border-4 border-kyokushin-black focus:border-kyokushin-red outline-none transition-colors font-bold appearance-none">
+                    <option>Gratis Proefles</option>
+                    <option>Lidmaatschap</option>
+                    <option>Algemene vraag</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Bericht</label>
+                  <textarea name="message" rows="6" required class="w-full px-6 py-4 border-4 border-kyokushin-black focus:border-kyokushin-red outline-none transition-colors font-bold"></textarea>
+                </div>
+                <button type="submit" class="btn-kyokushin w-full text-xl">Verstuur Bericht</button>
+              </form>
+            </div>
+
+            <div class="space-y-16">
+              <div>
+                <h2 class="text-4xl font-black mb-12 uppercase italic">LOCATIE & INFO</h2>
+                <div class="space-y-12">
+                  <div class="flex gap-8">
+                    <div class="text-kyokushin-red">
+                      <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
+                    <div>
+                      <h4 class="text-2xl font-black mb-2 uppercase">DOJO ADRES</h4>
+                      <p class="text-xl text-slate-600 font-bold">SPORTSCHOOL BEN & BOUK<br>CESAR FRANCKSTRAAT 40<br>2324JN LEIDEN</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-8">
+                    <div class="text-kyokushin-red">
+                      <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <div>
+                      <h4 class="text-2xl font-black mb-2 uppercase">TELEFOON</h4>
+                      <p class="text-xl text-slate-600 font-bold">06 - 20897508<br>06 - 51758898</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="border-8 border-kyokushin-black shadow-2xl overflow-hidden h-96 relative">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4896.821211410783!2d4.4662547133876505!3d52.14504207184833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5c656a31b1dc9%3A0xba901800188ef85c!2sCesar%20Franckstraat%2040%2C%202324%20JN%20Leiden!5e0!3m2!1snl!2snl!4v1771563044517!5m2!1snl!2snl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-kyokushin-black text-white py-24 border-t-8 border-kyokushin-red">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-16 mb-16">
+          <div class="col-span-2">
+            <div class="flex items-center gap-4 mb-8">
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-24 w-auto">
+              <span class="text-4xl font-black tracking-tighter">KYOKUSHIN <span class="text-kyokushin-red">LEIDEN</span></span>
+            </div>
+            <p class="text-slate-400 text-lg max-w-md">De officiële dojo voor Kyokushinkai Karate in Leiden. Sluit je aan bij de sterkste karate familie.</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-8 text-kyokushin-red">NAVIGATIE</h4>
+            <ul class="space-y-4 text-slate-400 font-bold uppercase tracking-widest text-sm">
+              <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="/lessen.html" class="hover:text-white transition-colors">Lessen</a></li>
+              <li><a href="/gallery.html" class="hover:text-white transition-colors">Galerij</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-8 text-kyokushin-red">CONTACT</h4>
+            <ul class="space-y-4 text-slate-400 text-sm font-bold">
+              <li>SPORTSCHOOL BEN & BOUK</li>
+              <li>CESAR FRANCKSTRAAT 40</li>
+              <li>2324JN LEIDEN</li>
+              <li>INFO@KYOKUSHINLEIDEN.NL</li>
+              <li>06 - 20897508 / 06 - 51758898</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center pt-16 border-t border-white/10 text-slate-500 text-xs font-bold uppercase tracking-widest">
+          <p>&copy; 2024 KYOKUSHIN LEIDEN. ALL RIGHTS RESERVED.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

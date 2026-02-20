@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galerij | Kyokushin Leiden</title>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <nav class="bg-white border-b-4 border-kyokushin-red sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-24 items-center">
+          <div class="flex-shrink-0 flex items-center gap-4">
+            <a href="/" class="flex items-center gap-4">
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-16 w-auto">
+              <div class="flex flex-col">
+                <span class="text-2xl font-black text-kyokushin-black leading-none">KYOKUSHIN</span>
+                <span class="text-lg font-bold text-kyokushin-red leading-none">LEIDEN</span>
+              </div>
+            </a>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/lessen.html" class="nav-link">Lessen</a>
+            <a href="/gallery.html" class="nav-link text-kyokushin-red">Galerij</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
+          </div>
+          <div class="md:hidden">
+            <button type="button" class="text-kyokushin-black p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-6 space-y-4">
+        <a href="/" class="block nav-link">Home</a>
+        <a href="/lessen.html" class="block nav-link">Lessen</a>
+        <a href="/gallery.html" class="block nav-link">Galerij</a>
+        <a href="/contact.html" class="block nav-link">Contact</a>
+      </div>
+    </nav>
+
+    <main class="flex-grow overflow-x-hidden">
+      <section class="py-32 bg-kyokushin-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 kanku-bg opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h1 class="text-6xl md:text-8xl font-black mb-8 italic uppercase">FOTO <span class="text-kyokushin-red">GALERIJ</span></h1>
+          <p class="text-xl text-slate-400 max-w-2xl">Actiebeelden uit onze dojo. Kracht, techniek en doorzettingsvermogen.</p>
+        </div>
+      </section>
+
+      <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Photos will be loaded here via JS -->
+            <div class="col-span-full py-32 text-center" id="loading-state">
+              <div class="inline-block w-12 h-12 border-8 border-slate-200 border-t-kyokushin-red rounded-full animate-spin mb-4"></div>
+              <p class="text-xl font-black uppercase tracking-widest text-slate-400">Laden...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-kyokushin-black text-white py-24 border-t-8 border-kyokushin-red">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-16 mb-16">
+          <div class="col-span-2">
+            <div class="flex items-center gap-4 mb-8">
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-24 w-auto">
+              <span class="text-4xl font-black tracking-tighter">KYOKUSHIN <span class="text-kyokushin-red">LEIDEN</span></span>
+            </div>
+            <p class="text-slate-400 text-lg max-w-md">De officiële dojo voor Kyokushinkai Karate in Leiden. Sluit je aan bij de sterkste karate familie.</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-8 text-kyokushin-red">NAVIGATIE</h4>
+            <ul class="space-y-4 text-slate-400 font-bold uppercase tracking-widest text-sm">
+              <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="/lessen.html" class="hover:text-white transition-colors">Lessen</a></li>
+              <li><a href="/gallery.html" class="hover:text-white transition-colors">Galerij</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-8 text-kyokushin-red">CONTACT</h4>
+            <ul class="space-y-4 text-slate-400 text-sm font-bold">
+              <li>SPORTSCHOOL BEN & BOUK</li>
+              <li>CESAR FRANCKSTRAAT 40</li>
+              <li>2324JN LEIDEN</li>
+              <li>INFO@KYOKUSHINLEIDEN.NL</li>
+              <li>06 - 20897508 / 06 - 51758898</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center pt-16 border-t border-white/10 text-slate-500 text-xs font-bold uppercase tracking-widest">
+          <p>&copy; 2024 KYOKUSHIN LEIDEN. ALL RIGHTS RESERVED.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/js/gallery.js"></script>
+  </body>
+</html>
