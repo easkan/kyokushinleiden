@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inschrijven | Kyokushin Leiden</title>
+    <link rel="stylesheet" href="/src/index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    <!-- Navbar (zelfde thema als contact.html) -->
+    <nav class="bg-white border-b-4 border-kyokushin-red sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-24 items-center">
+          <div class="flex-shrink-0 flex items-center gap-4">
+            <a href="/" class="flex items-center gap-4">
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" alt="Kyokushin Leiden Logo" class="h-16 w-auto">
+              <div class="flex flex-col">
+                <span class="text-2xl font-black text-kyokushin-black leading-none">KYOKUSHIN</span>
+                <span class="text-lg font-bold text-kyokushin-red leading-none">LEIDEN</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/lessen.html" class="nav-link">Lessen</a>
+            <a href="/gallery.html" class="nav-link">Galerij</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
+            <a href="/inschrijven.html" class="nav-link text-kyokushin-red">Inschrijven</a>
+          </div>
+
+          <div class="md:hidden">
+            <button type="button" class="text-kyokushin-black p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-6 space-y-4">
+        <a href="/" class="block nav-link">Home</a>
+        <a href="/lessen.html" class="block nav-link">Lessen</a>
+        <a href="/gallery.html" class="block nav-link">Galerij</a>
+        <a href="/contact.html" class="block nav-link">Contact</a>
+        <a href="/inschrijven.html" class="block nav-link text-kyokushin-red">Inschrijven</a>
+      </div>
+    </nav>
+
+    <main class="flex-grow overflow-x-hidden">
+      <!-- Hero -->
+
+      <!-- Content -->
+      <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-12 gap-12 items-start">
+            <!-- Info column -->
+            <aside class="lg:col-span-4">
+              <div class="border-8 border-kyokushin-black shadow-2xl p-10">
+                <h2 class="text-3xl font-black uppercase italic mb-6">BELANGRIJK</h2>
+                <ul class="space-y-4 text-slate-700 font-bold">
+                  <li class="flex gap-3">
+                    <span class="text-kyokushin-red font-black">•</span>
+                    <span>Gebruik een geldig e-mailadres en telefoonnummer.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="text-kyokushin-red font-black">•</span>
+                    <span>Wil je eerst proberen? Kies in het formulier voor een (gratis) proefles.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="text-kyokushin-red font-black">•</span>
+                    <span>Werkt het formulier niet? Open het direct in een nieuw tabblad.</span>
+                  </li>
+                </ul>
+
+                <div class="mt-10">
+                  <a
+                    class="btn-kyokushin w-full text-center block text-lg"
+                    href="https://manager.dojoexpert.com/student/form.aspx?g=ee6d07b2-72be-421c-b5a9-3420124b38ab&j=nl-B"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open formulier in nieuw tabblad
+                  </a>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Form embed column -->
+            <div class="lg:col-span-8">
+              <div class="border-8 border-kyokushin-black shadow-2xl overflow-hidden bg-white">
+                <div class="px-8 py-6 border-b-4 border-kyokushin-black">
+                  <h2 class="text-3xl font-black uppercase italic">
+                    AANMELD <span class="text-kyokushin-red">FORMULIER</span>
+                  </h2>
+                  <p class="text-slate-600 font-bold mt-2">
+                    Het formulier is een externe embed van DojoExpert.
+                  </p>
+                </div>
+
+                <!-- Responsive-ish embed wrapper -->
+                <div class="relative">
+                  <iframe
+                    title="DojoExpert inschrijfformulier"
+                    src="https://manager.dojoexpert.com/student/form.aspx?g=ee6d07b2-72be-421c-b5a9-3420124b38ab&j=nl-B"
+                    class="w-full"
+                    style="height: 1500px; border: 0;"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+
+                <!-- Small footer note -->
+                <div class="px-8 py-6 border-t-4 border-kyokushin-black">
+                  <p class="text-xs font-black uppercase tracking-widest text-slate-500">
+                    Tip: op mobiel kun je scrollen binnen het formulier. Als je browser embeds blokkeert, gebruik de knop “Open formulier in nieuw tabblad”.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (zelfde thema als contact.html) -->
+    <footer class="bg-kyokushin-black text-white py-24 border-t-8 border-kyokushin-red">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-16 mb-16">
+          <div class="col-span-2">
+            <div class="flex items-center gap-4 mb-8">
+              <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.png" alt="Kyokushin Leiden Logo" class="h-24 w-auto">
+              <span class="text-4xl font-black tracking-tighter">KYOKUSHIN <span class="text-kyokushin-red">LEIDEN</span></span>
+            </div>
+            <p class="text-slate-400 text-lg max-w-md">De officiële dojo voor Kyokushinkai Karate in Leiden. Sluit je aan bij de sterkste karate familie.</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-8 text-kyokushin-red">NAVIGATIE</h4>
+            <ul class="space-y-4 text-slate-400 font-bold uppercase tracking-widest text-sm">
+              <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="/lessen.html" class="hover:text-white transition-colors">Lessen</a></li>
+              <li><a href="/gallery.html" class="hover:text-white transition-colors">Galerij</a></li>
+            
+              <li><a href="/upload.html" class="hover:text-white transition-colors">Admin</a></li></ul>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-8 text-kyokushin-red">CONTACT</h4>
+            <ul class="space-y-4 text-slate-400 text-sm font-bold">
+              <li>SPORTSCHOOL BEN & BOUK</li>
+              <li>CESAR FRANCKSTRAAT 40</li>
+              <li>2324JN LEIDEN</li>
+              <li>INFO@KYOKUSHINLEIDEN.NL</li>
+              <li>06 - 20897508 / 06 - 51758898</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center pt-16 border-t border-white/10 text-slate-500 text-xs font-bold uppercase tracking-widest">
+          <p>&copy; 2024 KYOKUSHIN LEIDEN. ALL RIGHTS RESERVED.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
