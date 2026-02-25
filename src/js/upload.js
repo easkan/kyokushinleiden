@@ -491,5 +491,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await loadExisting();
 });
-  handleCategoryChange();
-});
+
