@@ -8,6 +8,9 @@ const els = {
   uploadBtn: document.getElementById("upload-btn"),
   previewImg: document.getElementById("preview-img"),
   caption: document.getElementById("caption"),
+  categorySelect: document.getElementById("category-select"),
+  categoryNew: document.getElementById("category-new"),
+  categoryNewWrap: document.getElementById("category-new-wrap"),
   saveBtn: document.getElementById("save-btn"),
   status: document.getElementById("status"),
   previewWrap: document.getElementById("preview-wrap"),
@@ -36,6 +39,46 @@ function ensureWidgetScript() {
     s.onerror = () => reject(new Error("Widget load error"));
     document.body.appendChild(s);
   });
+}
+
+
+
+function normalizeCategory(value) {
+  if (typeof value !== "string") return "";
+  return value.trim().replace(/\s+/g, " ").slice(0, 60);
+}
+
+async function loadCategories() {
+  if (!els.categorySelect) return;
+  try {
+    const res = await fetch("/.netlify/functions/gallery-categories", { cache: "no-store" });
+    if (!res.ok) return;
+    const cats = await res.json();
+    if (!Array.isArray(cats)) return;
+
+    // Keep the first 2 default options (Ongecategoriseerd + Nieuwe categorie…)
+    const keep = Array.from(els.categorySelect.querySelectorAll("option")).slice(0, 2);
+    els.categorySelect.innerHTML = "";
+    keep.forEach((opt) => els.categorySelect.appendChild(opt));
+
+    cats
+      .filter((c) => typeof c === "string" && c.trim())
+      .forEach((c) => {
+        const opt = document.createElement("option");
+        opt.value = c;
+        opt.textContent = c;
+        els.categorySelect.appendChild(opt);
+      });
+  } catch {
+    // ignore
+  }
+}
+
+function handleCategoryChange() {
+  if (!els.categorySelect || !els.categoryNewWrap) return;
+  const isNew = els.categorySelect.value === "__new__";
+  els.categoryNewWrap.classList.toggle("hidden", !isNew);
+  if (!isNew && els.categoryNew) els.categoryNew.value = "";
 }
 
 async function openUploader() {
@@ -97,6 +140,16 @@ async function saveMeta() {
 
   const caption = els.caption ? els.caption.value : "";
 
+  let category = "";
+  if (els.categorySelect) {
+    if (els.categorySelect.value === "__new__") {
+      category = normalizeCategory(els.categoryNew ? els.categoryNew.value : "");
+    } else {
+      category = normalizeCategory(els.categorySelect.value);
+    }
+  }
+
+
   const res = await fetch("/.netlify/functions/gallery-add", {
     method: "POST",
     headers: {
@@ -107,6 +160,7 @@ async function saveMeta() {
       publicId: uploaded.publicId,
       imageUrl: uploaded.imageUrl,
       caption,
+      category,
     }),
   });
 
@@ -120,6 +174,17 @@ async function saveMeta() {
   }
 
   setStatus("Opgeslagen ✅ (check de galerij)");
+  // refresh categories (in case a new one was created)
+  loadCategories();
+  if (els.categorySelect) {
+    const chosen = category || "";
+    // Wait a tick so options are repopulated
+    setTimeout(() => {
+      if (els.categorySelect) els.categorySelect.value = chosen || "";
+      handleCategoryChange();
+    }, 0);
+  }
+  if (els.categoryNew) els.categoryNew.value = "";
   if (els.caption) els.caption.value = "";
 }
 
@@ -127,47 +192,8 @@ if (els.uploadBtn) els.uploadBtn.addEventListener("click", openUploader);
 if (els.saveBtn) els.saveBtn.addEventListener("click", saveMeta);
 
 
-// ===== DELETE + LIST LOGIC ADDED =====
-async function loadItems() {
-  const container = document.getElementById("items");
-  if (!container) return;
-
-  const res = await fetch("/.netlify/functions/gallery-list", { cache: "no-store" });
-  const data = await res.json();
-  const items = Array.isArray(data) ? data : [];
-
-  container.innerHTML = items.map((it) => `
-    <div style="margin:12px 0">
-      <img src="${it.imageUrl}" style="width:100px;display:block" />
-      <div>${it.caption || ""}</div>
-      <button data-id="${it.id}" class="delete-btn">Verwijderen</button>
-    </div>
-  `).join("");
-
-  container.querySelectorAll(".delete-btn").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const id = btn.getAttribute("data-id");
-      const passwordInput = document.getElementById("admin-password");
-      const password = passwordInput ? passwordInput.value : "";
-
-      if (!password) {
-        alert("Vul eerst het wachtwoord in.");
-        return;
-      }
-
-      await fetch("/.netlify/functions/gallery-delete", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-upload-password": password,
-        },
-        body: JSON.stringify({ id }),
-      });
-
-      loadItems();
-    });
-  });
-}
-
-document.addEventListener("DOMContentLoaded", loadItems);
-// ===== END DELETE LOGIC =====
+if (els.categorySelect) els.categorySelect.addEventListener("change", handleCategoryChange);
+document.addEventListener("DOMContentLoaded", () => {
+  loadCategories();
+  handleCategoryChange();
+});

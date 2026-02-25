@@ -17,7 +17,7 @@ exports.handler = async (event) => {
     }
 
     const body = JSON.parse(event.body || "{}");
-    const { publicId, imageUrl, caption } = body;
+    const { publicId, imageUrl, caption, category } = body;
 
     if (!publicId || !imageUrl) {
       return { statusCode: 400, body: "Missing publicId or imageUrl" };
@@ -40,11 +40,33 @@ exports.handler = async (event) => {
       publicId,
       imageUrl,
       caption: typeof caption === "string" ? caption : "",
+      category: typeof category === "string" ? category.trim().replace(/\s+/g, " ").slice(0, 60) : "",
       createdAt: new Date().toISOString(),
     };
 
     items.unshift(item);
     await store.set(key, JSON.stringify(items));
+
+    // Keep a separate list of categories for the uploader dropdown
+    const cat = item.category;
+    if (cat) {
+      const catKey = "categories.json";
+      const catsRaw = (await store.get(catKey)) || "[]";
+      let cats = [];
+      try {
+        cats = JSON.parse(catsRaw);
+        if (!Array.isArray(cats)) cats = [];
+      } catch {
+        cats = [];
+      }
+      if (!cats.includes(cat)) {
+        cats.push(cat);
+        cats.sort((a, b) => a.localeCompare(b, "nl", { sensitivity: "base" }));
+        await store.set(catKey, JSON.stringify(cats));
+      }
+    }
+
+
 
     return {
       statusCode: 200,

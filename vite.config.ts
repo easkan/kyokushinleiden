@@ -14,7 +14,6 @@ export default defineConfig(({mode}) => {
           gallery: path.resolve(__dirname, 'gallery.html'),
           contact: path.resolve(__dirname, 'contact.html'),
           upload: path.resolve(__dirname, 'upload.html'),
-          inschrijven: path.resolve(__dirname, 'inschrijven.html'),
         },
       },
     },
