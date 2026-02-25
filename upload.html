@@ -96,7 +96,46 @@
           </div>
         </div>
       </section>
-      
+
+      <section class="pb-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+            <div>
+              <h2 class="text-3xl font-black tracking-tighter text-kyokushin-black">
+                Bestaande <span class="text-kyokushin-red">foto’s</span>
+              </h2>
+              <p class="mt-2 text-slate-600">
+                Beheer eerder geüploade foto’s: verwijderen of categorie/onderschrift aanpassen.
+              </p>
+            </div>
+            <button id="existing-refresh" type="button"
+              class="rounded-xl bg-slate-100 border border-slate-200 px-5 py-3 font-black uppercase tracking-widest text-sm hover:bg-slate-200 transition">
+              Ververs
+            </button>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
+            <div class="grid md:grid-cols-3 gap-4">
+              <label class="block text-sm font-bold uppercase tracking-widest text-slate-600">
+                Filter categorie
+                <select id="existing-filter-category" class="mt-3 w-full rounded-xl border border-slate-300 px-4 py-3 text-base bg-white">
+                  <option value="__all__">Alle categorieën</option>
+                </select>
+              </label>
+
+              <label class="block text-sm font-bold uppercase tracking-widest text-slate-600 md:col-span-2">
+                Zoek (onderschrift / id)
+                <input id="existing-filter-search" type="text" class="mt-3 w-full rounded-xl border border-slate-300 px-4 py-3 text-base" placeholder="Bijv. toernooi, dojo, 2026..." />
+              </label>
+            </div>
+
+            <p id="existing-status" class="mt-5 text-sm text-slate-600"></p>
+
+            <div id="existing-list" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="bg-kyokushin-black text-white py-24 border-t-8 border-kyokushin-red">
