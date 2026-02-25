@@ -13,7 +13,9 @@ export default defineConfig(({mode}) => {
           lessen: path.resolve(__dirname, 'lessen.html'),
           gallery: path.resolve(__dirname, 'gallery.html'),
           contact: path.resolve(__dirname, 'contact.html'),
+          inschrijven: path.resolve(__dirname, 'inschrijven.html'),
           upload: path.resolve(__dirname, 'upload.html'),
+
         },
       },
     },
