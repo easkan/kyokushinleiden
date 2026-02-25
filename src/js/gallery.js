@@ -11,9 +11,9 @@ function renderItem(item) {
   const img = item.imageUrl || item.image || "";
   const caption = item.caption || "";
   return `
-    <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+    <div class="gallery-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
       <img src="${escapeHtml(img)}" alt="${escapeHtml(caption)}"
-        class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
       ${caption ? `
         <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
           <p class="text-white text-sm font-bold">${escapeHtml(caption)}</p>
@@ -21,6 +21,47 @@ function renderItem(item) {
       ` : ""}
     </div>
   `;
+}
+
+function setupCarousels(rootEl) {
+  const carousels = rootEl.querySelectorAll("[data-carousel]");
+  for (const carousel of carousels) {
+    const viewport = carousel.querySelector("[data-carousel-viewport]");
+    const prevBtn = carousel.querySelector("[data-carousel-prev]");
+    const nextBtn = carousel.querySelector("[data-carousel-next]");
+    if (!viewport || !prevBtn || !nextBtn) continue;
+
+    const update = () => {
+      const overflow = viewport.scrollWidth > viewport.clientWidth + 2;
+      carousel.classList.toggle("is-overflow", overflow);
+
+      if (!overflow) {
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        prevBtn.style.display = "none";
+        nextBtn.style.display = "none";
+        return;
+      }
+
+      prevBtn.style.display = "grid";
+      nextBtn.style.display = "grid";
+      prevBtn.disabled = viewport.scrollLeft <= 2;
+      const maxScroll = viewport.scrollWidth - viewport.clientWidth - 2;
+      nextBtn.disabled = viewport.scrollLeft >= maxScroll;
+    };
+
+    const scrollByPage = (dir) => {
+      const amount = Math.max(240, Math.floor(viewport.clientWidth * 0.9));
+      viewport.scrollBy({ left: dir * amount, behavior: "smooth" });
+    };
+
+    prevBtn.addEventListener("click", () => scrollByPage(-1));
+    nextBtn.addEventListener("click", () => scrollByPage(1));
+    viewport.addEventListener("scroll", () => window.requestAnimationFrame(update), { passive: true });
+    window.addEventListener("resize", () => window.requestAnimationFrame(update));
+
+    update();
+  }
 }
 
 async function loadGallery() {
@@ -68,12 +109,24 @@ async function loadGallery() {
             </h2>
             <p class="text-sm font-bold uppercase tracking-widest text-slate-400">${groupItems.length} foto${groupItems.length === 1 ? "" : "’s"}</p>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            ${groupItems.map(renderItem).join("")}
+          <div class="gallery-carousel" data-carousel>
+            <button class="carousel-btn" type="button" aria-label="Vorige" data-carousel-prev>
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="carousel-viewport" data-carousel-viewport>
+              <div class="carousel-track">
+                ${groupItems.map(renderItem).join("")}
+              </div>
+            </div>
+            <button class="carousel-btn" type="button" aria-label="Volgende" data-carousel-next>
+              <span aria-hidden="true">›</span>
+            </button>
           </div>
         </section>
       `;
     }).join("");
+
+    setupCarousels(container);
 
     if (loadingState) loadingState.style.display = "none";
   } catch (error) {
