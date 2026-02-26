@@ -181,3 +181,7 @@ async function loadGallery() {
 }
 
 document.addEventListener("DOMContentLoaded", loadGallery);
+
+// Expose for inline onclick (because this file is loaded as type="module")
+window.showNext = showNext;
+window.showPrev = showPrev;
