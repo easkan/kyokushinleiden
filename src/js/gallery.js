@@ -1,3 +1,6 @@
+let currentImages = [];
+let currentIndex = 0;
+
 function escapeHtml(str) {
   return String(str)
     .replaceAll("&", "&amp;")
@@ -7,13 +10,13 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-function renderItem(item) {
+function renderItem(item, index, groupImages) {
   const img = item.imageUrl || item.image || "";
   const caption = item.caption || "";
 
   return `
     <div class="gallery-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 cursor-pointer"
-         data-img="${escapeHtml(img)}">
+         data-index="${index}">
       <img src="${escapeHtml(img)}"
            alt="${escapeHtml(caption)}"
            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -27,29 +30,65 @@ function renderItem(item) {
   `;
 }
 
-function setupLightbox() {
+function openLightbox(images, index) {
   const lightbox = document.getElementById("lightbox");
   const img = document.getElementById("lightbox-img");
 
+  currentImages = images;
+  currentIndex = index;
+
+  img.src = currentImages[currentIndex];
+
+  lightbox.classList.remove("hidden");
+  lightbox.classList.add("flex");
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  lightbox.classList.add("hidden");
+  lightbox.classList.remove("flex");
+}
+
+function showNext() {
+  if (currentImages.length === 0) return;
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  document.getElementById("lightbox-img").src = currentImages[currentIndex];
+}
+
+function showPrev() {
+  if (currentImages.length === 0) return;
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  document.getElementById("lightbox-img").src = currentImages[currentIndex];
+}
+
+function setupLightbox() {
+  const lightbox = document.getElementById("lightbox");
+
   document.addEventListener("click", function(e) {
+
+    // Klik op foto
     const card = e.target.closest(".gallery-card");
-    if (card && card.dataset.img) {
-      img.src = card.dataset.img;
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
+    if (card) {
+      const section = card.closest("section");
+      const cards = Array.from(section.querySelectorAll(".gallery-card"));
+      const images = cards.map(c => c.querySelector("img").src);
+      const index = parseInt(card.dataset.index);
+
+      openLightbox(images, index);
+      return;
     }
 
+    // Sluiten bij klik buiten foto
     if (e.target === lightbox) {
-      lightbox.classList.add("hidden");
-      lightbox.classList.remove("flex");
+      closeLightbox();
     }
   });
 
+  // Toetsenbord
   document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") {
-      lightbox.classList.add("hidden");
-      lightbox.classList.remove("flex");
-    }
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") showNext();
+    if (e.key === "ArrowLeft") showPrev();
   });
 }
 
@@ -62,19 +101,6 @@ function setupCarousels(rootEl) {
     const nextBtn = carousel.querySelector("[data-carousel-next]");
     if (!viewport || !prevBtn || !nextBtn) continue;
 
-    const update = () => {
-      const overflow = viewport.scrollWidth > viewport.clientWidth + 2;
-
-      if (!overflow) {
-        prevBtn.style.display = "none";
-        nextBtn.style.display = "none";
-        return;
-      }
-
-      prevBtn.style.display = "grid";
-      nextBtn.style.display = "grid";
-    };
-
     const scrollByPage = (dir) => {
       const amount = Math.max(240, Math.floor(viewport.clientWidth * 0.9));
       viewport.scrollBy({ left: dir * amount, behavior: "smooth" });
@@ -82,10 +108,6 @@ function setupCarousels(rootEl) {
 
     prevBtn.addEventListener("click", () => scrollByPage(-1));
     nextBtn.addEventListener("click", () => scrollByPage(1));
-    viewport.addEventListener("scroll", update);
-    window.addEventListener("resize", update);
-
-    update();
   }
 }
 
@@ -111,6 +133,7 @@ async function loadGallery() {
 
     container.innerHTML = order.map(cat => {
       const groupItems = groups.get(cat);
+      const imageList = groupItems.map(i => i.imageUrl || i.image || "");
 
       return `
         <section>
@@ -119,7 +142,7 @@ async function loadGallery() {
             <button class="carousel-btn" data-carousel-prev>‹</button>
             <div class="carousel-viewport" data-carousel-viewport>
               <div class="carousel-track">
-                ${groupItems.map(renderItem).join("")}
+                ${groupItems.map((item, i) => renderItem(item, i)).join("")}
               </div>
             </div>
             <button class="carousel-btn" data-carousel-next>›</button>
