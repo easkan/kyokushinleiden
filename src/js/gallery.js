@@ -10,13 +10,12 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-function renderItem(item, index, groupImages) {
+function renderItem(item) {
   const img = item.imageUrl || item.image || "";
   const caption = item.caption || "";
 
   return `
-    <div class="gallery-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 cursor-pointer"
-         data-index="${index}">
+    <div class="gallery-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 cursor-pointer">
       <img src="${escapeHtml(img)}"
            alt="${escapeHtml(caption)}"
            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -29,6 +28,10 @@ function renderItem(item, index, groupImages) {
     </div>
   `;
 }
+
+/* =========================
+   LIGHTBOX LOGIC
+========================= */
 
 function openLightbox(images, index) {
   const lightbox = document.getElementById("lightbox");
@@ -50,31 +53,39 @@ function closeLightbox() {
 }
 
 function showNext() {
-  if (currentImages.length === 0) return;
+  if (!currentImages.length) return;
   currentIndex = (currentIndex + 1) % currentImages.length;
   document.getElementById("lightbox-img").src = currentImages[currentIndex];
 }
 
 function showPrev() {
-  if (currentImages.length === 0) return;
+  if (!currentImages.length) return;
   currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
   document.getElementById("lightbox-img").src = currentImages[currentIndex];
 }
 
 function setupLightbox() {
   const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
 
   document.addEventListener("click", function(e) {
 
-    // Klik op foto
+    // Klik op gallery foto
     const card = e.target.closest(".gallery-card");
     if (card) {
       const section = card.closest("section");
       const cards = Array.from(section.querySelectorAll(".gallery-card"));
-      const images = cards.map(c => c.querySelector("img").src);
-      const index = parseInt(card.dataset.index);
 
-      openLightbox(images, index);
+      currentImages = cards.map(c =>
+        c.querySelector("img").getAttribute("src")
+      );
+
+      currentIndex = cards.indexOf(card);
+
+      img.src = currentImages[currentIndex];
+
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
       return;
     }
 
@@ -84,13 +95,18 @@ function setupLightbox() {
     }
   });
 
-  // Toetsenbord
   document.addEventListener("keydown", function(e) {
+    if (lightbox.classList.contains("hidden")) return;
+
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowRight") showNext();
     if (e.key === "ArrowLeft") showPrev();
   });
 }
+
+/* =========================
+   CAROUSEL
+========================= */
 
 function setupCarousels(rootEl) {
   const carousels = rootEl.querySelectorAll("[data-carousel]");
@@ -110,6 +126,10 @@ function setupCarousels(rootEl) {
     nextBtn.addEventListener("click", () => scrollByPage(1));
   }
 }
+
+/* =========================
+   LOAD GALLERY
+========================= */
 
 async function loadGallery() {
   const container = document.getElementById("gallery-container");
@@ -133,7 +153,6 @@ async function loadGallery() {
 
     container.innerHTML = order.map(cat => {
       const groupItems = groups.get(cat);
-      const imageList = groupItems.map(i => i.imageUrl || i.image || "");
 
       return `
         <section>
@@ -142,7 +161,7 @@ async function loadGallery() {
             <button class="carousel-btn" data-carousel-prev>‹</button>
             <div class="carousel-viewport" data-carousel-viewport>
               <div class="carousel-track">
-                ${groupItems.map((item, i) => renderItem(item, i)).join("")}
+                ${groupItems.map(renderItem).join("")}
               </div>
             </div>
             <button class="carousel-btn" data-carousel-next>›</button>
