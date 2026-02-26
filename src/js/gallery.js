@@ -31,7 +31,6 @@ function setupLightbox() {
   const img = document.getElementById("lightbox-img");
 
   document.addEventListener("click", function(e) {
-
     const card = e.target.closest(".gallery-card");
     if (card) {
       const section = card.closest(".category");
@@ -41,7 +40,6 @@ function setupLightbox() {
       currentIndex = cards.indexOf(card);
 
       img.src = currentImages[currentIndex];
-
       lightbox.classList.remove("hidden");
       lightbox.classList.add("flex");
       return;
@@ -63,7 +61,6 @@ function setupLightbox() {
 
 async function loadGallery() {
   const container = document.getElementById("gallery-container");
-
   const res = await fetch("/.netlify/functions/gallery-list");
   const items = await res.json();
 
@@ -81,7 +78,7 @@ async function loadGallery() {
           <span>${escapeHtml(cat)}</span>
           <span class="chevron">⌄</span>
         </div>
-        <div class="gallery-grid hidden">
+        <div class="gallery-grid">
           ${groups[cat].map(item => `
             <div class="gallery-card">
               <img src="${escapeHtml(item.imageUrl || item.image || "")}" loading="lazy">
@@ -94,10 +91,7 @@ async function loadGallery() {
 
   document.querySelectorAll(".category-header").forEach(header => {
     header.addEventListener("click", () => {
-      const category = header.parentElement;
-      const grid = category.querySelector(".gallery-grid");
-      category.classList.toggle("open");
-      grid.classList.toggle("hidden");
+      header.parentElement.classList.toggle("open");
     });
   });
 

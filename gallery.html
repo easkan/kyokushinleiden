@@ -9,10 +9,14 @@
 
   <style>
     .gallery-grid {
-      display: grid;
+      display: none;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       gap: 1rem;
       margin-top: 1rem;
+    }
+
+    .category.open .gallery-grid {
+      display: grid;
     }
 
     .gallery-card {
@@ -54,6 +58,30 @@
 
 <body class="flex flex-col min-h-screen">
 
+<!-- NAVBAR -->
+<nav class="bg-white border-b-4 border-kyokushin-red sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-24 items-center">
+      <div class="flex items-center gap-4">
+        <a href="/" class="flex items-center gap-4">
+          <img src="https://6992610d681c79fa0bce099b.imgix.net/Weblogo-v3.jpg" class="h-16 w-auto">
+          <div>
+            <span class="text-2xl font-black">KYOKUSHIN</span>
+            <span class="text-lg font-bold text-kyokushin-red block">LEIDEN</span>
+          </div>
+        </a>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/lessen.html" class="nav-link">Lessen</a>
+        <a href="/gallery.html" class="nav-link text-kyokushin-red">Galerij</a>
+        <a href="/contact.html" class="nav-link">Contact</a>
+        <a href="/inschrijven.html" class="nav-link">Inschrijven</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
 <main class="flex-grow">
 
 <section class="py-20 bg-kyokushin-black text-white">
@@ -88,6 +116,13 @@
   </button>
 
 </div>
+
+<!-- FOOTER -->
+<footer class="bg-kyokushin-black text-white py-16 border-t-8 border-kyokushin-red">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <p class="text-sm text-slate-400">© 2024 Kyokushin Leiden. All rights reserved.</p>
+  </div>
+</footer>
 
 <script type="module" src="src/js/gallery.js"></script>
 
