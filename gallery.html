@@ -140,8 +140,8 @@
 
 </main>
 
-<!-- 🔥 LIGHTBOX -->
-<div id="lightbox" class="fixed inset-0 bg-black/95 hidden z-50">
+<div id="lightbox"
+     class="fixed inset-0 bg-black/95 hidden items-center justify-center z-50">
 
   <!-- Vorige -->
   <button onclick="showPrev()"
@@ -155,10 +155,8 @@
   </button>
 
   <!-- Afbeelding -->
-  <div class="w-full h-full flex items-center justify-center">
-    <img id="lightbox-img"
-         class="max-w-[92%] max-h-[88%] object-contain rounded-xl shadow-2xl">
-  </div>
+  <img id="lightbox-img"
+       class="max-w-[92%] max-h-[88%] object-contain rounded-xl shadow-2xl">
 
   <!-- Volgende -->
   <button onclick="showNext()"
