@@ -86,7 +86,6 @@
                   <textarea name="message" rows="6" required class="w-full px-6 py-4 border-4 border-kyokushin-black focus:border-kyokushin-red outline-none transition-colors font-bold"></textarea>
                 </div>
                 <button type="submit" class="btn-kyokushin w-full text-xl">Verstuur via WhatsApp</button>
-                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Je bericht wordt geopend in WhatsApp naar 06 - 51758898</p>
               </form>
             </div>
 
@@ -188,8 +187,6 @@
           var message = (data.get("message") || "").toString().trim();
 
           var lines = [
-            "Nieuw bericht via kyokushinleiden.nl",
-            "",
             "Naam: " + name,
             "E-mail: " + email,
             "Onderwerp: " + subject,
